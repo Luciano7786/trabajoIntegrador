@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+</head>
+<body>
+    <h1>Contactanos!</h1>
+    <h2>Formulario de Contacto</h2>
+    <form action="/enviar">
+        <!-- Nombre -->
+        <label for="nombre">Nombre y Apellido:</label><br>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <!-- Correo -->
+        <label for="email">Correo Electrónico:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <!-- Teléfono -->
+        <label for="nombre">Teléfono:</label><br>
+        <input type="number" id="telefono" name="telefono"><br><br>
+
+        <!-- Mensaje -->
+        <label for="mensaje">Consulta:</label><br>
+        <textarea id="mensaje" name="mensaje" rows="5"></textarea><br><br>
+
+        <!-- Checkbox -->
+        <label>
+        <input type="checkbox" name="suscripcion" value="si">
+        Deseo recibir noticias.
+        </label><br><br>
+
+        <!-- Botón -->
+        <button type="submit">Enviar</button>
+
+    </form>
+</body>
+</html>
