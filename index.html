@@ -4,152 +4,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/globals.css">
+    <link rel="stylesheet" href="./styles/index.css">
     <title>Proyecto Final</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            margin: 0;
-        }
-
-        main {
-            flex-grow: 1;
-        }
-
-        header,
-        footer {
-            background-color: #0E0E0E;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 60px;
-        }
-
-        header .logo strong {
-            color: white;
-        }
-
-        header nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        header nav ul li a {
-            margin-left: 20px;
-            color: white;
-        }
-
-        header nav ul li a:hover {
-            color: blue;
-        }
-
-        footer {
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        footer div {
-            flex: 1;
-            text-align: center;
-        }
-
-        footer div:first-child {
-            text-align: left;
-        }
-
-        footer img {
-            height: 2em;
-        }
-
-        footer a {
-            margin-right: 15px;
-        }
-
-        footer img {
-            height: 2em;
-        }
-
-        footer p {
-            color: white;
-        }
-
-        .idw-section {
-            background-color: #f0f0f0;
-            padding: 50px 0;
-            text-align: center;
-        }
-
-        .idw-section h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-
-        .idw-section p {
-            font-size: 1.1em;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .salones-section {
-            padding: 50px 0;
-            text-align: center;
-        }
-
-        .salones-section h2 {
-            font-size: 2em;
-            margin-bottom: 30px;
-        }
-
-        .salones-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 200px);
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .salon-placeholder {
-            width: 200px;
-            height: 150px;
-            background-color: #ddd;
-        }
-    </style>
 </head>
 
 <body>
     <header>
         <div class="logo">
             <a href="index.html">
-
                 <strong>LOGO</strong>
         </div>
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="institucional.html">Informaciòn Institucional</a></li>
+                <li><a href="institucional.html">Información Institucional</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
+        <section class="hero-image">
+            <h1>Elegí. Reservá. Celebrá.</h1>
+        </section>
         <section class="idw-section">
             <div class="container">
-                <h1>IDW S.A.</h1>
+                <h2>IDW S.A.</h2>
                 <p>En IDW S.A. nos especializamos en brindar soluciones digitales que simplifican la vida de las personas. Actualmente desarrollamos una plataforma innovadora para la reserva de salones de cumpleaños infantiles, que funciona como un completo catálogo de espacios y servicios. Nuestro objetivo es ofrecer una experiencia visual atractiva, intuitiva y accesible, donde cada usuario pueda filtrar, comparar y presupuestar fácilmente, encontrando el lugar ideal para celebrar momentos inolvidables.</p>
             </div>
         </section>
 
         <section class="salones-section">
+
             <h2>Nuestros Salones</h2>
             <div class="salones-grid">
-                <div class="salon-placeholder" style="background-image: url('https://fiestasybodas.com.ar/salones/orion/salon_de_fiesta_bahia_blanca_orion.jpg'); background-size: cover; background-position: center;"></div>
-                <div class="salon-placeholder" style="background-image: url('https://www.inolvidables15.com/assets/images/2087_18958fotoalgr.jpg'); background-size: cover; background-position: center;"></div>
-                <div class="salon-placeholder" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSmt2rES_WGoe0eqoNKJuPLtIdDHeqEk9tehBQ2SfJp1TVKAHheqNXSBoGWdlIH-6P3sA&usqp=CAU'); background-size: cover; background-position: center;"></div>
-                <div class="salon-placeholder" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjowTzDSzIvu18xI7z-NU1BsHz7igwbH3Vc6h3CFDOphPOnLH3kx_q_ylQfLAe_ws45Fw&usqp=CAU'); background-size: cover; background-position: center;"></div>
+                <div class="salon-placeholder">
+                    <div class="img-container">
+                        <img src="/public/salon1.jpg" alt="Imagen de salón de fiestas" class="salon-img">
+                    </div>
+                    <p class="nombre-salon">Salón Prisma</p>
+                </div>
+                <div class="salon-placeholder">
+                    <div class="img-container">
+                        <img src="/public/salon2.jpg" alt="Imagen de salón de fiestas" class="salon-img">
+                        
+                    </div>
+                    <p class="nombre-salon">Salón Cielo Azul</p>
+                </div>
+                <div class="salon-placeholder">
+                    <div class="img-container">
+                        <img src="/public/salon3.webp" alt="Imagen de salón de fiestas" class="salon-img">
+                    </div>
+                    <p class="nombre-salon">Salóm Galaxy</p>
+                </div>
+                <div class="salon-placeholder">
+                    <div class="img-container">
+                        <img src="/public/salon4.webp" alt="Imagen de salón de fiestas" class="salon-img">
+                    </div>
+                        <p class="nombre-salon">Salón Natura</p>
+                </div>
             </div>
+
         </section>
     </main>
 
