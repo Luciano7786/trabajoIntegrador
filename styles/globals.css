@@ -27,11 +27,20 @@ header {
   font-family: 'Roboto Mono';
 }
 
-header .logo strong {
+/* header .logo strong {
   color: white;
   font-family: 'Roboto Mono';
   letter-spacing: 1rem;
   cursor: pointer;
+} */
+
+header #log{
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  padding-bottom: 5%;
+  padding-top: 0;
+  border-radius: 15%;
 }
 
 header nav ul {
