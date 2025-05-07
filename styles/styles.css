@@ -17,81 +17,25 @@ main {
   background-color: #f0f0f0;
 }
 
-header,
-footer {
-  background-color: #0e0e0e;
-  padding: 10px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 90px;
-}
-
-header {
+header{
   font-family: 'Roboto Mono';
 }
 
-header a {
-  text-decoration: none;
+.hover-effect-list-item {
+  transition: background-color 2s ease, color 3s ease;
+  border-radius: 0.5rem;
 }
 
-header .logo strong {
-  color: white;
-  font-family: 'Roboto Mono';
-  letter-spacing: 1rem;
-  cursor: pointer;
+.hover-effect-list-item:hover {
+  background-color: #d8a775;
 }
 
-header nav ul {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+.hover-effect-list-item:hover .nav-link {
+  color: #000000;
 }
-
-header nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-family: 'Roboto Mono';
-  padding: 10px;
-}
-
-header nav ul li a:hover {
-  color: #4a90e2;
-  background-color: #2c2c2c;
-  border-radius: 10px;
-  font-weight: bold;
-}
-
 
 footer {
-  justify-content: center;
-}
-
-footer div {
-  flex: 1;
-  text-align: center;
-}
-
-footer div:first-child {
-  text-align: left;
-}
-
-footer img {
-  height: 2em;
-}
-
-footer a {
-  margin-right: 15px;
-}
-
-footer img {
-  height: 2em;
-}
-
-footer p {
-  color: white;
+  font-family: 'Roboto Mono';
 }
 
 /* INDEX.HTML */
