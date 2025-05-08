@@ -21,6 +21,15 @@ header{
   font-family: 'Roboto Mono';
 }
 
+.hover-effect-button {
+  transition: background-color 3s ease, color 7s ease;
+  border-radius: 0.5rem;
+}
+
+.hover-effect-button:hover {
+  background-color: #d8a775;
+}
+
 .hover-effect-list-item {
   transition: background-color 2s ease, color 3s ease;
   border-radius: 0.5rem;
