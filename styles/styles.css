@@ -42,6 +42,10 @@ header {
   color: #000000;
 }
 
+.logoCapibara {
+  width: 150px;
+}
+
 footer {
   font-family: 'Roboto Mono';
 }
