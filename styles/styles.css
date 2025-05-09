@@ -85,27 +85,18 @@ footer {
 
 
 .hero-image h1 {
-<<<<<<< HEAD
   position: absolute;
   top: 15rem;
   color: #f0f0f0;
   background-color: rgba(0, 0, 0, 0.4);
   font-size: 4rem;
-  padding: 2rem;
-  border-radius: 20px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-=======
-    width: fit-content;
-    max-width: 80%; 
-    padding: 1.5rem 2rem;
-    white-space: nowrap; 
-    background-color: rgba(0, 0, 0, 0.4);
-    color: #f0f0f0;
-    font-size: 4rem;
-    border-radius: 15px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    margin-left: 0;
->>>>>>> af43148 (Modificación del index y css. Estetica y responsive)
+  width: fit-content;
+  max-width: 80%; 
+  padding: 1.5rem 2rem;
+  white-space: nowrap; 
+  border-radius: 15px;
+  margin-left: 0;
 }
 
 .idw-section {
@@ -133,30 +124,53 @@ footer {
 }
 
 .salones-section {
-  padding: 50px 0;
-  text-align: center;
+    background-color: #f0f0f0b6;
+    padding: 60px 0;
 }
 
 .salones-section h2 {
-  font-size: 2em;
-  margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #030303b7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-bottom: 2rem;
 }
-
-.salones-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-
 
 .salon-placeholder {
-  padding-bottom: 20px;
-  height: auto;
-  border-radius: 20px;
-  overflow: hidden;
-  transition: all 300ms ease-in-out, transform 300ms ease-in-out;
+    background-color: #fafafab9;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 5px 5px 15px rgba(66, 223, 183, 0.658);
+    transition: all 300ms ease-in-out;
+}
+
+.salon-placeholder:hover {
+    transform: scale(1.05);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.img-container img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.salon-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 15px;
+    background-color: #97ca1f;
+    color: rgb(15, 1, 1);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: background-color 300ms ease-in-out;
+}
+
+.salon-btn:hover {
+    background-color: #166b06;
+    color: aliceblue;
 }
 
 .img-container {
@@ -180,8 +194,8 @@ footer {
 
 
 .salon-placeholder:hover {
-  transform: scale(1.07); /* Valor intermedio */
-  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -191,6 +205,12 @@ footer {
         padding: 1rem; /* Ajusta fondo */
         max-width: 95%; /* Evita que se salga del área */
         white-space: normal; /* Permite que se adapte en pantallas chicas */
+    }
+    .salones-section h2 {
+    font-size: 2em;
+    }
+    .salon-placeholder {
+    width: 100%;
     }
 }
 
