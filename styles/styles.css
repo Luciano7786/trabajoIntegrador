@@ -193,7 +193,7 @@ footer {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .hero-image h1 {
         font-size: 2.5rem; 
         padding: 1rem; 
@@ -206,8 +206,11 @@ footer {
     .salon-placeholder {
     width: 100%;
     }
-    .hero-image{
+    .text_hero_image{
       display: none;
+    }
+    .logoCapibara{
+      width:6rem;
     }
 }
 
