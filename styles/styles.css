@@ -50,6 +50,15 @@ footer {
   font-family: 'Roboto Mono';
 }
 
+.iconoFace{
+  width: 40px;
+}
+
+.iconoInsta{
+  width: 40px;
+  background-size: cover;
+}
+
 /* INDEX.HTML */
 
 .hero-image {
