@@ -195,16 +195,19 @@ footer {
 
 @media (max-width: 768px) {
     .hero-image h1 {
-        font-size: 2.5rem; /* Reduce tamaño en móviles */
-        padding: 1rem; /* Ajusta fondo */
-        max-width: 95%; /* Evita que se salga del área */
-        white-space: normal; /* Permite que se adapte en pantallas chicas */
+        font-size: 2.5rem; 
+        padding: 1rem; 
+        max-width: 95%; 
+        white-space: normal; 
     }
     .salones-section h2 {
     font-size: 2em;
     }
     .salon-placeholder {
     width: 100%;
+    }
+    .hero-image{
+      display: none;
     }
 }
 
