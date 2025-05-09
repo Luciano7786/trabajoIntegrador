@@ -97,6 +97,7 @@ footer {
   white-space: nowrap; 
   border-radius: 15px;
   margin-left: 0;
+  overflow: hidden;
 }
 
 .idw-section {
