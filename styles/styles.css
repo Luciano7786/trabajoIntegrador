@@ -59,17 +59,17 @@ footer {
   background-size: cover;
 }
 
-/* INDEX.HTML */
-
-.menu {
+.fondo-global {
   background-image: url('https://cdn.shopify.com/s/files/1/0657/3100/2634/files/confettis-16_6700100f-6573-4617-ac11-905e3faf7c68.png?v=1732096866'); 
   background-size: cover; 
   background-position: center;
-
 }
+
+/* INDEX.HTML */
+
 .hero-image {
     width: 100%;
-    min-height: 60vh; 
+    height: calc(100dvh - 100px);
     background: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1920&q=80');
     background-repeat: no-repeat;
     background-size: cover;
@@ -77,7 +77,6 @@ footer {
     display: flex;
     align-items: center;
     text-align: left; 
-    margin-bottom: 3rem;
     position: relative;
     justify-content: flex-start;
 }
@@ -85,7 +84,7 @@ footer {
 
 .hero-image h1 {
   position: absolute;
-  top: 15rem;
+  top: 9rem;
   color: #f0f0f0;
   background-color: rgba(0, 0, 0, 0.4);
   font-size: 4rem;
@@ -196,7 +195,7 @@ footer {
 @media (max-width: 992px) {
     .hero-image h1 {
         font-size: 2.5rem; 
-        padding: 1rem; 
+        padding: 1rem;
         max-width: 95%; 
         white-space: normal; 
     }
@@ -214,6 +213,12 @@ footer {
     }
 }
 
+@media (max-width: 640px) {
+  .hero-image {
+    height: 40vh;
+    /* height: calc(100dvh - 100px) */
+  }
+}
 
 /* INSTITUCIONAL */
 
@@ -235,20 +240,19 @@ h2 {
 
 /* CONTACTO PAGINA */
 
-.page-form-container {
+/* .page-form-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   padding: 3rem;
-}
+} */
 
 .form-container {
   margin-top: 2rem;
   width: 400px;
   background-color: #f0f0f0;
   border-radius: 20px;
-  padding: 30px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   /* sombra suave y profunda */
   backdrop-filter: blur(4px);
@@ -263,18 +267,82 @@ h2 {
 textarea {
   display: block;
   width: 100%;
-  margin-top: 10px;
   padding: 10px 10px;
   border-radius: 10px;
   outline: none;
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.checkbox-news {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.checkbox-input {
+  display: none !important;
 }
+
+
+.custom-checkbox-label {
+  position: relative;
+  padding-left: 35px; 
+  cursor: pointer;
+  font-size: 1.2rem; 
+}
+
+
+.custom-checkbox-label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 25px;
+  height: 25px;
+  border: 2px solid #007bff;
+  border-radius: 5px; 
+  background-color: white;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.checkbox-input:checked + .custom-checkbox-label::before {
+  background-color: #007bff; 
+  border-color: #007bff; 
+}
+
+
+.checkbox-input:checked + .custom-checkbox-label::after {
+  content: "✔";
+  position: absolute;
+  left: -2px;
+  top: -5px;
+  font-size: 20px;
+  color: white;
+}
+
+.custom-checkbox-label:hover::before {
+  border-color: #0056b3;
+}
+
+
+@media(max-width: 640px) {
+ .form-container {
+  width: 300px;
+ }  
+ .custom-checkbox-label {
+  font-size: 1rem; 
+}
+.custom-checkbox-label::before {
+  width: 20px;
+  height: 20px; 
+}
+
+.checkbox-input:checked + .custom-checkbox-label::after {
+  content: "✔";
+  position: absolute;
+  left: -2px;
+  top: -5px;
+  font-size: 1rem;
+  color: white;
+}
+
+}
+
 
 /* institucional.html */
 .quienesSomos {
