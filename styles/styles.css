@@ -18,8 +18,23 @@ main {
 }
 
 header {
+  height: 100px;
   font-family: 'Roboto Mono';
   font-size: 13px;
+  min-height: 50px;
+  z-index: 999;
+}
+
+.navbar-collapse {
+  margin-right: 1rem;
+  background: #000;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.navbar-nav .nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hover-effect-button {
@@ -45,7 +60,8 @@ header {
 }
 
 .logoCapibara {
-  width: 150px;
+  max-height: 80px;
+  width: auto;
 }
 
 footer {
@@ -53,11 +69,11 @@ footer {
 }
 
 .iconoFace{
-  width: 40px;
+  width: 24px;
 }
 
 .iconoInsta{
-  width: 40px;
+  width: 24px;
   background-size: cover;
 }
 
