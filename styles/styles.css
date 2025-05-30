@@ -99,7 +99,6 @@ footer {
     justify-content: flex-start;
 }
 
-
 .hero-image h1 {
   position: absolute;
   top: 9rem;
@@ -209,7 +208,6 @@ footer {
   font-weight: bolder;
 }
 
-
 @media (max-width: 992px) {
     .hero-image h1 {
         font-size: 2.5rem; 
@@ -258,14 +256,6 @@ h2 {
 
 /* CONTACTO PAGINA */
 
-/* .page-form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 3rem;
-} */
-
 .form-container {
   margin-top: 2rem;
   width: 400px;
@@ -304,7 +294,6 @@ textarea {
   font-size: 1.2rem; 
 }
 
-
 .custom-checkbox-label::before {
   content: "";
   position: absolute;
@@ -323,7 +312,6 @@ textarea {
   border-color: #007bff; 
 }
 
-
 .checkbox-input:checked + .custom-checkbox-label::after {
   content: "✔";
   position: absolute;
@@ -337,12 +325,11 @@ textarea {
   border-color: #0056b3;
 }
 
-
 @media(max-width: 640px) {
- .form-container {
+.form-container {
   width: 300px;
- }  
- .custom-checkbox-label {
+}  
+.custom-checkbox-label {
   font-size: 1rem; 
 }
 .custom-checkbox-label::before {
@@ -360,7 +347,6 @@ textarea {
 }
 
 }
-
 
 /* institucional.html */
 .quienesSomos {
