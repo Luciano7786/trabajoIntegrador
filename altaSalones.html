@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -84,8 +84,6 @@
       </nav>
     </header>
 
-    <!-- ACA VA EL FORMULARIO -->
-
     <main>
       <h1 class="mt-5 text-center">Registrar Salones</h1>
       <div class="container main-content">
@@ -95,32 +93,32 @@
             class="btn btn-success"
             type="button"
             data-bs-toggle="modal"
-            data-bs-target="#addSalonModal"
+            data-bs-target="#modalAgregarSalon"
           >
             <i class="bi bi-plus-lg me-2"></i> Agregar Salón
           </button>
         </div>
 
-        <div id="searchSalonesCard" class="input-group mb-4">
+        <div id="tarjetaBusquedaSalones" class="input-group mb-4">
           <span class="input-group-text bg-transparent border-0"
             ><i class="bi bi-search"></i
           ></span>
           <input
             type="text"
             class="form-control border-0"
-            id="searchSalonInput"
+            id="inputBusquedaSalon"
             placeholder="Buscar salones por nombre o dirección..."
           />
           <button
             class="btn btn-outline-secondary border-0"
             type="button"
-            id="clearSearchButton"
+            id="botonLimpiarBusqueda"
           >
             Limpiar
           </button>
         </div>
 
-        <div id="alertContainer" class="mb-3"></div>
+        <div id="contenedorAlerta" class="mb-3"></div>
 
         <div class="card">
           <div class="card-body">
@@ -135,11 +133,11 @@
                     <th scope="col">Acciones</th>
                   </tr>
                 </thead>
-                <tbody id="salonsTableBody"></tbody>
+                <tbody id="cuerpoTablaSalones"></tbody>
               </table>
             </div>
             <p
-              id="noSalonsMessage"
+              id="mensajeSinSalones"
               class="text-center text-muted mt-3"
               style="display: none"
             >
@@ -151,15 +149,17 @@
 
       <div
         class="modal fade"
-        id="addSalonModal"
+        id="modalAgregarSalon"
         tabindex="-1"
-        aria-labelledby="addSalonModalLabel"
+        aria-labelledby="etiquetaModalAgregarSalon"
         aria-hidden="true"
       >
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="addSalonModalLabel">Nuevo Salón</h5>
+              <h5 class="modal-title" id="etiquetaModalAgregarSalon">
+                Nuevo Salón
+              </h5>
               <button
                 type="button"
                 class="btn-close"
@@ -168,45 +168,45 @@
               ></button>
             </div>
             <div class="modal-body">
-              <form id="salonForm">
-                <input type="hidden" id="salonId" value="" />
+              <form id="formularioSalon">
+                <input type="hidden" id="idSalon" value="" />
                 <div class="mb-3 form-floating">
                   <input
                     type="text"
                     class="form-control"
-                    id="salonName"
+                    id="nombreSalon"
                     placeholder="Nombre del Salón"
                     required
                   />
-                  <label for="salonName">Nombre</label>
+                  <label for="nombreSalon">Nombre</label>
                 </div>
                 <div class="mb-3 form-floating">
                   <input
                     type="text"
                     class="form-control"
-                    id="salonAddress"
+                    id="direccionSalon"
                     placeholder="Dirección del Salón"
                     required
                   />
-                  <label for="salonAddress">Dirección</label>
+                  <label for="direccionSalon">Dirección</label>
                 </div>
                 <div class="mb-3 form-floating">
                   <textarea
                     class="form-control"
-                    id="salonDescription"
+                    id="descripcionSalon"
                     placeholder="Descripción del Salón"
                     style="height: 100px"
                   ></textarea>
-                  <label for="salonDescription">Descripción</label>
+                  <label for="descripcionSalon">Descripción</label>
                 </div>
                 <div class="mb-3 form-floating">
                   <input
                     type="text"
                     class="form-control"
-                    id="salonImageUrls"
+                    id="urlsImagenSalon"
                     placeholder="URL de imágenes (separadas por coma)"
                   />
-                  <label for="salonImageUrls">URLs de Imágenes</label>
+                  <label for="urlsImagenSalon">URLs de Imágenes</label>
                   <small class="form-text text-muted"
                     >Ej: https://ejemplo.com/imagen1.jpg,
                     https://ejemplo.com/imagen2.png</small
@@ -219,11 +219,15 @@
                 type="button"
                 class="btn btn-secondary"
                 data-bs-dismiss="modal"
-                id="cancelButtonModal"
+                id="botonCancelarModal"
               >
                 Cancelar
               </button>
-              <button type="submit" class="btn btn-success" form="salonForm">
+              <button
+                type="submit"
+                class="btn btn-success"
+                form="formularioSalon"
+              >
                 Guardar
               </button>
             </div>
@@ -237,7 +241,7 @@
         <div class="row align-items-center text-center text-lg-start m-5">
           <div class="col-lg-4">
             <p>
-              Made with love <span style="color: red">❤️</span> by
+              Hecho con amor <span style="color: red">❤️</span> por
               <strong>IDW S.A.</strong>
             </p>
           </div>

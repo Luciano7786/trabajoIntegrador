@@ -83,7 +83,7 @@ body {
   justify-content: space-between;
 }
 
-.container.main-content {
+.container.contenido-principal {
   background-color: #ffffff;
   padding: 1.5rem 2.5rem;
   border-radius: 8px;
@@ -187,7 +187,7 @@ h2 {
   color: #777;
 }
 
-#searchSalonesCard {
+#tarjetaBusquedaSalones {
   background-color: #f8f9fa;
   border: 1px solid #e0e0e0;
   margin-bottom: 2rem;
@@ -195,17 +195,17 @@ h2 {
   padding: 1.5rem;
 }
 
-#searchSalonesCard .form-control {
+#tarjetaBusquedaSalones .form-control {
   border-radius: 20px;
   border: 1px solid #ccc;
 }
 
-#searchSalonesCard .input-group-text {
+#tarjetaBusquedaSalones .input-group-text {
   background-color: transparent;
   border: none;
 }
 
-#clearSearchButton:hover {
+#botonLimpiarBusqueda:hover {
   background-color: #0d6efd;
   color: white;
   border-color: #0d6efd;
@@ -218,7 +218,7 @@ h2 {
     padding-bottom: 15px;
   }
 
-  .container.main-content {
+  .container.contenido-principal {
     padding: 1rem;
     width: 90%;
     margin-left: auto;
@@ -248,7 +248,7 @@ h2 {
     text-align: center;
   }
 
-  #searchSalonesCard {
+  #tarjetaBusquedaSalones {
     padding: 1rem;
     margin-bottom: 1.5rem;
   }

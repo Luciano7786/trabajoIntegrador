@@ -1,195 +1,219 @@
-const LS_KEY = 'salonesInfantiles';
-let salons = [];
-let nextId = 1;
+const LS_KEY = "salonesInfantiles";
+let salones = [];
+let proximoId = 1;
 
-const salonForm = document.getElementById('salonForm');
-const salonIdInput = document.getElementById('salonId');
-const salonNameInput = document.getElementById('salonName');
-const salonAddressInput = document.getElementById('salonAddress');
-const salonDescriptionInput = document.getElementById('salonDescription');
-const salonImageUrlsInput = document.getElementById('salonImageUrls');
-const salonsTableBody = document.getElementById('salonsTableBody');
-const formTitle = document.getElementById('addSalonModalLabel');
-const searchSalonInput = document.getElementById('searchSalonInput');
-const clearSearchButton = document.getElementById('clearSearchButton');
-const alertContainer = document.getElementById('alertContainer');
-const noSalonsMessage = document.getElementById('noSalonsMessage');
+const formularioSalon = document.getElementById("formularioSalon");
+const inputIdSalon = document.getElementById("idSalon");
+const inputNombreSalon = document.getElementById("nombreSalon");
+const inputDireccionSalon = document.getElementById("direccionSalon");
+const inputDescripcionSalon = document.getElementById("descripcionSalon");
+const inputUrlsImagenSalon = document.getElementById("urlsImagenSalon");
+const cuerpoTablaSalones = document.getElementById("cuerpoTablaSalones");
+const tituloFormulario = document.getElementById("etiquetaModalAgregarSalon");
+const inputBusquedaSalon = document.getElementById("inputBusquedaSalon");
+const botonLimpiarBusqueda = document.getElementById("botonLimpiarBusqueda");
+const contenedorAlerta = document.getElementById("contenedorAlerta");
+const mensajeSinSalones = document.getElementById("mensajeSinSalones");
 
-const addSalonModal = new bootstrap.Modal(document.getElementById('addSalonModal'));
-const cancelButtonModal = document.getElementById('cancelButtonModal');
+const modalAgregarSalon = new bootstrap.Modal(
+  document.getElementById("modalAgregarSalon")
+);
+const botonCancelarModal = document.getElementById("botonCancelarModal");
 
-function showAlert(message, type = 'success') {
-    const alertHtml = `
-        <div class="alert alert-${type} alert-dismissible fade show" role="alert">
-            ${message}
+function mostrarAlerta(mensaje, tipo = "success") {
+  const htmlAlerta = `
+        <div class="alert alert-${tipo} alert-dismissible fade show" role="alert">
+            ${mensaje}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
         </div>
     `;
-    alertContainer.innerHTML = alertHtml;
-    setTimeout(() => {
-        const alertElement = alertContainer.querySelector('.alert');
-        if (alertElement) {
-            bootstrap.Alert.getInstance(alertElement)?.close();
-        }
-    }, 5000);
-}
-
-function loadSalonsFromLocalStorage() {
-    const data = localStorage.getItem(LS_KEY);
-    if (data) {
-        salons = JSON.parse(data);
-        if (salons.length > 0) {
-            nextId = Math.max(...salons.map(s => s.id)) + 1;
-        }
-    } else {
-        salons = [];
-        nextId = 1;
+  contenedorAlerta.innerHTML = htmlAlerta;
+  setTimeout(() => {
+    const elementoAlerta = contenedorAlerta.querySelector(".alert");
+    if (elementoAlerta) {
+      bootstrap.Alert.getInstance(elementoAlerta)?.close();
     }
+  }, 5000);
 }
 
-function saveSalonsToLocalStorage() {
-    localStorage.setItem(LS_KEY, JSON.stringify(salons));
-}
-
-function clearForm() {
-    salonIdInput.value = '';
-    salonNameInput.value = '';
-    salonAddressInput.value = '';
-    salonDescriptionInput.value = '';
-    salonImageUrlsInput.value = '';
-}
-
-function displaySalons(filteredSalons = salons) {
-    salonsTableBody.innerHTML = '';
-    if (filteredSalons.length === 0) {
-        noSalonsMessage.style.display = 'block';
-        return;
+function cargarSalonesDesdeLocalStorage() {
+  const data = localStorage.getItem(LS_KEY);
+  if (data) {
+    salones = JSON.parse(data);
+    if (salones.length > 0) {
+      proximoId = Math.max(...salones.map((s) => s.id)) + 1;
     }
-    noSalonsMessage.style.display = 'none';
+  } else {
+    salones = [];
+    proximoId = 1;
+  }
+}
 
-    filteredSalons.forEach(salon => {
-        const row = document.createElement('tr');
-        const imageUrls = salon.imageUrls ? salon.imageUrls.split(',').map(url => url.trim()) : [];
-        const firstImageUrl = imageUrls.length > 0 ? imageUrls[0] : '';
+function guardarSalonesEnLocalStorage() {
+  localStorage.setItem(LS_KEY, JSON.stringify(salones));
+}
 
-        row.innerHTML = `
+function limpiarFormulario() {
+  inputIdSalon.value = "";
+  inputNombreSalon.value = "";
+  inputDireccionSalon.value = "";
+  inputDescripcionSalon.value = "";
+  inputUrlsImagenSalon.value = "";
+}
+
+function mostrarSalones(salonesFiltrados = salones) {
+  cuerpoTablaSalones.innerHTML = "";
+  if (salonesFiltrados.length === 0) {
+    mensajeSinSalones.style.display = "block";
+    return;
+  }
+  mensajeSinSalones.style.display = "none";
+
+  salonesFiltrados.forEach((salon) => {
+    const fila = document.createElement("tr");
+    const urlsImagen = salon.imageUrls
+      ? salon.imageUrls.split(",").map((url) => url.trim())
+      : [];
+    const primeraUrlImagen = urlsImagen.length > 0 ? urlsImagen[0] : "";
+
+    fila.innerHTML = `
             <td data-label="ID:">${salon.id}</td>
             <td data-label="Nombre:">${salon.name}</td>
             <td data-label="Dirección:">${salon.address}</td>
             <td data-label="Imagen:">
-                ${firstImageUrl ? `<img src="${firstImageUrl}" alt="Imagen de ${salon.name}" class="img-thumbnail-table">` : 'Sin imagen'}
+                ${
+                  primeraUrlImagen
+                    ? `<img src="${primeraUrlImagen}" alt="Imagen de ${salon.name}" class="img-thumbnail-table">`
+                    : "Sin imagen"
+                }
             </td>
             <td class="actions-cell" data-label="Acciones:">
                 <div>
-                    <button type="button" class="btn btn-link btn-sm text-decoration-none" onclick="editSalon(${salon.id})" title="Editar Salón">
+                    <button type="button" class="btn btn-link btn-sm text-decoration-none" onclick="editarSalon(${
+                      salon.id
+                    })" title="Editar Salón">
                         <i class="bi bi-pencil-square"></i> <span class="d-none d-md-inline">Editar</span>
                     </button>
-                    <button type="button" class="btn btn-link btn-sm text-danger text-decoration-none" onclick="deleteSalon(${salon.id})" title="Eliminar Salón">
+                    <button type="button" class="btn btn-link btn-sm text-danger text-decoration-none" onclick="eliminarSalon(${
+                      salon.id
+                    })" title="Eliminar Salón">
                         <i class="bi bi-trash"></i> <span class="d-none d-md-inline">Eliminar</span>
                     </button>
                 </div>
             </td>
         `;
-        salonsTableBody.appendChild(row);
-    });
+    cuerpoTablaSalones.appendChild(fila);
+  });
 }
 
-salonForm.addEventListener('submit', (event) => {
-    event.preventDefault();
+formularioSalon.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-    const id = salonIdInput.value;
-    const name = salonNameInput.value.trim();
-    const address = salonAddressInput.value.trim();
-    const description = salonDescriptionInput.value.trim();
-    const imageUrls = salonImageUrlsInput.value.trim();
+  const id = inputIdSalon.value;
+  const nombre = inputNombreSalon.value.trim();
+  const direccion = inputDireccionSalon.value.trim();
+  const descripcion = inputDescripcionSalon.value.trim();
+  const urlsImagen = inputUrlsImagenSalon.value.trim();
 
-    if (!name || !address) {
-        showAlert('El nombre y la dirección son obligatorios.', 'danger');
-        return;
-    }
+  if (!nombre || !direccion) {
+    mostrarAlerta("El nombre y la dirección son obligatorios.", "danger");
+    return;
+  }
 
-    if (id) {
-        const index = salons.findIndex(s => s.id === parseInt(id));
-        if (index !== -1) {
-            salons[index] = { id: parseInt(id), name, address, description, imageUrls };
-            showAlert('Salón actualizado exitosamente!', 'success');
-        } else {
-            showAlert('Error: Salón no encontrado para editar.', 'danger');
-        }
+  if (id) {
+    const indice = salones.findIndex((s) => s.id === parseInt(id));
+    if (indice !== -1) {
+      salones[indice] = {
+        id: parseInt(id),
+        name: nombre,
+        address: direccion,
+        description: descripcion,
+        imageUrls: urlsImagen,
+      };
+      mostrarAlerta("Salón actualizado exitosamente!", "success");
     } else {
-        const newSalon = {
-            id: nextId++,
-            name,
-            address,
-            description,
-            imageUrls
-        };
-        salons.push(newSalon);
-        showAlert('Salón agregado exitosamente!', 'success');
+      mostrarAlerta("Error: Salón no encontrado para editar.", "danger");
     }
+  } else {
+    const nuevoSalon = {
+      id: proximoId++,
+      name: nombre,
+      address: direccion,
+      description: descripcion,
+      imageUrls: urlsImagen,
+    };
+    salones.push(nuevoSalon);
+    mostrarAlerta("Salón agregado exitosamente!", "success");
+  }
 
-    saveSalonsToLocalStorage();
-    displaySalons();
-    clearForm();
-    addSalonModal.hide();
+  guardarSalonesEnLocalStorage();
+  mostrarSalones();
+  limpiarFormulario();
+  modalAgregarSalon.hide();
 });
 
-window.editSalon = function (id) {
-    const salon = salons.find(s => s.id === id);
-    if (salon) {
-        salonIdInput.value = salon.id;
-        salonNameInput.value = salon.name;
-        salonAddressInput.value = salon.address;
-        salonDescriptionInput.value = salon.description;
-        salonImageUrlsInput.value = salon.imageUrls;
-        formTitle.textContent = 'Editar Salón';
-        addSalonModal.show();
-    } else {
-        showAlert('Salón no encontrado para edición.', 'danger');
-    }
-}
+window.editarSalon = function (id) {
+  const salon = salones.find((s) => s.id === id);
+  if (salon) {
+    inputIdSalon.value = salon.id;
+    inputNombreSalon.value = salon.name;
+    inputDireccionSalon.value = salon.address;
+    inputDescripcionSalon.value = salon.description;
+    inputUrlsImagenSalon.value = salon.imageUrls;
+    tituloFormulario.textContent = "Editar Salón";
+    modalAgregarSalon.show();
+  } else {
+    mostrarAlerta("Salón no encontrado para edición.", "danger");
+  }
+};
 
-window.deleteSalon = function (id) {
-    if (confirm('¿Estás seguro de que quieres eliminar este salón?')) {
-        salons = salons.filter(salon => salon.id !== id);
-        saveSalonsToLocalStorage();
-        displaySalons();
-        showAlert('Salón eliminado exitosamente!', 'success');
-        clearForm();
-    }
-}
+window.eliminarSalon = function (id) {
+  if (confirm("¿Estás seguro de que quieres eliminar este salón?")) {
+    salones = salones.filter((salon) => salon.id !== id);
+    guardarSalonesEnLocalStorage();
+    mostrarSalones();
+    mostrarAlerta("Salón eliminado exitosamente!", "success");
+    limpiarFormulario();
+  }
+};
 
-document.getElementById('addSalonModal').addEventListener('show.bs.modal', function () {
-    if (salonIdInput.value === '') {
-        clearForm();
-        formTitle.textContent = 'Nuevo Salón';
+document
+  .getElementById("modalAgregarSalon")
+  .addEventListener("show.bs.modal", function () {
+    if (inputIdSalon.value === "") {
+      limpiarFormulario();
+      tituloFormulario.textContent = "Nuevo Salón";
     }
+  });
+
+botonCancelarModal.addEventListener("click", () => {
+  limpiarFormulario();
+  mostrarAlerta("Operación cancelada.", "info");
 });
 
-cancelButtonModal.addEventListener('click', () => {
-    clearForm();
-    showAlert('Operación cancelada.', 'info');
-});
-
-searchSalonInput.addEventListener('input', () => {
-    const query = searchSalonInput.value.trim().toLowerCase();
-    const filtered = salons.filter(salon =>
-        salon.name.toLowerCase().includes(query) ||
-        salon.address.toLowerCase().includes(query)
+inputBusquedaSalon.addEventListener("input", () => {
+  const consulta = inputBusquedaSalon.value.trim().toLowerCase();
+  const filtrados = salones.filter(
+    (salon) =>
+      salon.name.toLowerCase().includes(consulta) ||
+      salon.address.toLowerCase().includes(consulta)
+  );
+  mostrarSalones(filtrados);
+  if (consulta && filtrados.length === 0) {
+    mostrarAlerta(
+      "No se encontraron salones que coincidan con la búsqueda.",
+      "info"
     );
-    displaySalons(filtered);
-    if (query && filtered.length === 0) {
-        showAlert('No se encontraron salones que coincidan con la búsqueda.', 'info');
-    }
+  }
 });
 
-clearSearchButton.addEventListener('click', () => {
-    searchSalonInput.value = '';
-    displaySalons();
-    showAlert('Búsqueda limpiada, mostrando todos los salones.', 'info');
+botonLimpiarBusqueda.addEventListener("click", () => {
+  inputBusquedaSalon.value = "";
+  mostrarSalones();
+  mostrarAlerta("Búsqueda limpiada, mostrando todos los salones.", "info");
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadSalonsFromLocalStorage();
-    displaySalons();
+document.addEventListener("DOMContentLoaded", () => {
+  cargarSalonesDesdeLocalStorage();
+  mostrarSalones();
 });
