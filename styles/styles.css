@@ -26,7 +26,7 @@ header {
 }
 
 .navbar-collapse {
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
   background: #000;
   border-radius: 0px 0px 20px 20px;
 }
