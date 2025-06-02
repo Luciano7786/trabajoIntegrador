@@ -1,2 +1,0 @@
-<> Vincular las cards con los salones existentens creados en las tablas de agregar salon.
-<> Ver errores cometidos en la entrega 2 marcados por los profesores para solucionarlos.
