@@ -2,27 +2,14 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <link
-      rel="preconnect"
-      href="https://fonts.googleapis.com"
-    />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="styles/styles.css"
-    />
+    <link rel="stylesheet" href="styles/styles.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -34,9 +21,8 @@
       href="img/capibaraInstitucional.ico"
       type="image/x-icon"
     />
-    <title>IDW S.A. Eventos Infantiles</title>
+    <title>Document</title>
   </head>
-
   <body>
     <header class="bg-black text-white">
       <nav class="navbar navbar-expand-sm navbar-dark">
@@ -53,6 +39,7 @@
               />
             </a>
           </div>
+
           <button
             class="navbar-toggler hover-effect-button"
             type="button"
@@ -69,21 +56,12 @@
           class="collapse navbar-collapse justify-content-end"
           id="navbarNav"
         >
-          <ul
-            id="ul-navbar"
-            class="navbar-nav text-center"
-          >
+          <ul id="ul-navbar" class="navbar-nav text-center">
             <li class="nav-item p-2 m-2 hover-effect-list-item">
-              <a
-                class="nav-link text-white text-center"
-                href="index.html"
-                >Inicio</a
-              >
+              <a class="nav-link text-white" href="index.html">Inicio</a>
             </li>
             <li class="nav-item p-2 m-2 hover-effect-list-item">
-              <a
-                class="nav-link text-white text-center"
-                href="institucional.html"
+              <a class="nav-link text-white" href="institucional.html"
                 >Información Institucional</a
               >
             </li>
@@ -91,61 +69,59 @@
               id="li-contacto"
               class="nav-item p-2 m-2 hover-effect-list-item"
             >
-              <a
-                class="nav-link text-white text-center"
-                href="contacto.html"
-                >Contacto</a
-              >
+              <a class="nav-link text-white" href="contacto.html">Contacto</a>
             </li>
           </ul>
         </div>
       </nav>
     </header>
 
-    <main class="fondo-global">
-      <section class="hero-image">
-        <div class="container-fluid text_hero_image">
-          <div class="row d-flex align-items-center">
-            <div class="col-lg-6 col-md-8 col-sm-12 text-start">
-              <h1>Elegí. Reservá. Celebrá.</h1>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div class="d-flex justify-content-center">
+      <h1 class="my-4">Iniciar Sesión</h1>
+    </div>
 
-      <section class="idw-section">
-        <div class="container">
-          <div class="row">
-            <div class="col-12 text-center">
-              <h2>IDW S.A.</h2>
-              <p>
-                En IDW S.A. nos especializamos en brindar soluciones digitales
-                que simplifican la vida de las personas. Actualmente
-                desarrollamos una plataforma innovadora para la reserva de
-                salones de cumpleaños infantiles, que funciona como un completo
-                catálogo de espacios y servicios. Nuestro objetivo es ofrecer
-                una experiencia visual atractiva, intuitiva y accesible, donde
-                cada usuario pueda filtrar, comparar y presupuestar fácilmente,
-                encontrando el lugar ideal para celebrar momentos inolvidables.
-              </p>
-            </div>
-          </div>
+    <div class="form-container-login">
+      <form id="form-login" class="form-login">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email</label>
+          <input
+            id="email"
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+            name="email"
+            required
+          />
         </div>
-      </section>
-      <section
-        id="salones-section"
-        class="salones-section"
-      >
-        <h2 class="text-center">Nuestros Salones</h2>
-        <div class="container-fluid">
-          <div
-            id="salones-container"
-            class="row mx-auto d-flex justify-content-center align-items-center gap-4"
+        <div class="form-group">
+          <label for="exampleInputPassword1">Contraseña</label>
+          <input
+            id="contraseña"
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Contraseña"
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          id="clase-boton"
+          class="btn btn-outline-success btn-hover"
+        >
+          Iniciar Sesión
+        </button>
+        <p>
+          No tienes un usuario?
+          <a href="crearUsuario.html" class="anchor-iniciar-crear"
+            >Registrarse</a
           >
-          </div>
-        </div>
-      </section>
-    </main>
+        </p>
+      </form>
+    </div>
 
     <footer class="bg-black text-white py-4">
       <div class="container-fluid">
@@ -166,10 +142,7 @@
           <div
             class="col-lg-4 d-flex justify-content-center justify-content-lg-end mb-3"
           >
-            <a
-              href="#"
-              class="mx-2"
-            >
+            <a href="#" class="mx-2">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Facebook_icon_2013.svg/2048px-Facebook_icon_2013.svg.png"
                 alt="Facebook"
@@ -187,14 +160,12 @@
         </div>
       </div>
     </footer>
-    <script type="module" src="js/utilidades.js"></script>
-    <script type="module" src="js/header-boton.js"></script>
-    <script type="module" src="js/salonesCard.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
       crossorigin="anonymous"
     ></script>
-
+    <script type="module" src="js/iniciarSesion.js"></script>
+    <script type="module" src="js/header-boton.js"></script>
   </body>
 </html>
