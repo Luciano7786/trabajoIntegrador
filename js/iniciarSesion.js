@@ -18,6 +18,6 @@ if (!usuario) {
     };
     localStorage.setItem("usuario", JSON.stringify(usuario));
 
-    window.location = "/altaSalones.html";
+    window.location = "./altaSalones.html";
   });
 }

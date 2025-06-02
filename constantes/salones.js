@@ -16,7 +16,7 @@ export const salones = [
       "Salón temático con ambientación de cuentos, pensado para experiencias mágicas e inolvidables.",
     imageUrls:
       "https://www.aecrosario.org.ar/wp-content/uploads/2024/09/IMG-20240909-WA0138.jpg",
-  },
+  },  
   {
     id: 3,
     name: "Pekelandia",

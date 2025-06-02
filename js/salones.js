@@ -1,7 +1,7 @@
 const LS_KEY = "salonesInfantiles";
 let salones = [];
 let proximoId = 1;
-
+import { obtenerSalones, salonesCards } from './salonesCard.js'
 const formularioSalon = document.getElementById("formularioSalon");
 const inputIdSalon = document.getElementById("idSalon");
 const inputNombreSalon = document.getElementById("nombreSalon");
@@ -18,6 +18,7 @@ const mensajeSinSalones = document.getElementById("mensajeSinSalones");
 const modalAgregarSalon = new bootstrap.Modal(
   document.getElementById("modalAgregarSalon")
 );
+
 const botonCancelarModal = document.getElementById("botonCancelarModal");
 
 function mostrarAlerta(mensaje, tipo = "success") {
@@ -113,7 +114,7 @@ formularioSalon.addEventListener("submit", (event) => {
   const nombre = inputNombreSalon.value.trim();
   const direccion = inputDireccionSalon.value.trim();
   const descripcion = inputDescripcionSalon.value.trim();
-  const urlsImagen = inputUrlsImagenSalon.value.trim();
+  const urlsImagen = inputUrlsImagenSalon.value.trim() || 'img/imagen_placeholder.jpg';
 
   if (!nombre || !direccion) {
     mostrarAlerta("El nombre y la dirección son obligatorios.", "danger");
@@ -150,6 +151,7 @@ formularioSalon.addEventListener("submit", (event) => {
   mostrarSalones();
   limpiarFormulario();
   modalAgregarSalon.hide();
+  salonesCards();
 });
 
 window.editarSalon = function (id) {
@@ -217,3 +219,40 @@ document.addEventListener("DOMContentLoaded", () => {
   cargarSalonesDesdeLocalStorage();
   mostrarSalones();
 });
+
+// function obtenerSalones() {
+//   return JSON.parse(localStorage.getItem("salonesInfantiles")) || [];
+// }
+
+// function salonesCards() {
+//   const contenedor = document.getElementById("salones-container");
+//   if (!contenedor) return
+//   const salones = obtenerSalones();
+
+//   salones.forEach((salon) => { 
+//     const card = document.createElement("div");
+//     card.classList.add('col-lg-3', 'col-md-4', 'col-sm-6');
+
+//     card.innerHTML = `
+//     <div class="salon-placeholder d-flex flex-column align-items-center">
+//       <div class="img-container">
+//         <img
+//            src=${
+//              salon.imageUrls
+//                ? salon.imageUrls
+//                : './img/imagen_placeholder.jpg'
+//            }
+//           alt="Imagen de salón de fiestas"
+//           class="salon-img"
+//         />
+//       </div>
+//       <p class="nombre-salon">${salon.name}</p>
+//       </div>
+//       <p>${salon.description}</p>
+//     </div>
+//       `
+//       contenedor.appendChild(card);
+//   });
+// }
+
+document.addEventListener("DOMContentLoaded", salonesCards);

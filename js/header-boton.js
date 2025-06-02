@@ -1,6 +1,7 @@
 import { obtenerUsuarioLocalStorage } from "./utilidades.js";
+const usuario = obtenerUsuarioLocalStorage();
+
 document.addEventListener("DOMContentLoaded", () => {
-  const usuario = obtenerUsuarioLocalStorage();
 
   const ulNavbar = document.getElementById("ul-navbar");
 
@@ -17,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const liRegistrarSalon = document.createElement("li");
     liRegistrarSalon.classList.add(
       "nav-item",
-      "p-2",
+      "p-2",  
       "m-2",
       "hover-effect-list-item"
     );
