@@ -1,23 +1,30 @@
-import { obtenerUsuarioLocalStorage } from "./utilidades.js";
+import { authUser,guardarUsuarioSessionStorage } from "./utilidades.js";
 
-let usuario = obtenerUsuarioLocalStorage();
 
-if (!usuario) {
-  document.getElementById("form-login").addEventListener("submit", (e) => {
+  document.getElementById("form-login").addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const email = document.getElementById("email").value;
-    const contraseña = document.getElementById("contraseña").value;
+    const usuario = document.getElementById("usuario").value;
+    const contrasenia = document.getElementById("contrasenia").value;
 
-    console.log(email.value);
-    console.log(contraseña.value);
+    if (!usuario || !contrasenia) {
+      return
+    }
 
-    usuario = {
-      email,
-      contraseña,
-    };
-    localStorage.setItem("usuario", JSON.stringify(usuario));
+    const existeUsuario = await authUser({usuario ,contrasenia})
 
-    window.location = "./altaSalones.html";
+
+    if(existeUsuario) {
+      guardarUsuarioSessionStorage(existeUsuario)
+      if (existeUsuario.role === 'admin') {
+        window.location = 'altaSalones.html'
+      } else {
+        window.location = 'index.html'
+      }
+    } else {
+      window.location.reload()
+      return false
+    }
+
   });
-}
+
