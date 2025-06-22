@@ -70,3 +70,17 @@ export async function authUser ({ usuario, contrasenia }) {
   }
 
 }
+
+export async function obtenerUsuarios (){
+
+  try {
+    const response = await fetch('https://dummyjson.com/users')
+    const data = await response.json()
+    const { users } = data
+    return users
+  } catch (err){
+    console.log(err)
+    throw new Error ('Error al obtener usuarios')
+  }
+  
+}
