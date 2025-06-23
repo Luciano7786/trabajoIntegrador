@@ -5,7 +5,7 @@ export function obtenerUsuarioSessionStorage() {
   return JSON.parse(sessionStorage.getItem("usuario")) || null;
 }
 
-export function guardarUsuarioSessionStorage (usuario) {
+export function guardarUsuarioSessionStorage ({usuario, accessToken}) {
   const existeUsuario = sessionStorage.getItem('usuario')
   if(existeUsuario) {
     alert('Ya existe un usuario logueado')
@@ -17,6 +17,7 @@ export function guardarUsuarioSessionStorage (usuario) {
   }
 
   sessionStorage.setItem('usuario', JSON.stringify(usuario))
+  sessionStorage.setItem('accessToken', JSON.stringify(accessToken))
 }
 
 export function borrarSessionStorage () {

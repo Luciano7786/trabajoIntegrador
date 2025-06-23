@@ -17,15 +17,15 @@ document.addEventListener("DOMContentLoaded", () => {
   } else if( usuario.role === 'admin' ){
     const liRegistrarSalon = document.createElement("li");
     liRegistrarSalon.classList.add(
-      "nav-item",
+      "nav-item", 
       "p-2",  
       "m-2",  
       "hover-effect-list-item"  
     );
     const aRegistrarSalon = document.createElement("a");
     aRegistrarSalon.classList.add("nav-link", "text-white", "text-center");
-    aRegistrarSalon.textContent = "Registrar Salón";
-    aRegistrarSalon.href = "./altaSalones.html";
+    aRegistrarSalon.textContent = "Panel Admin";
+    aRegistrarSalon.href = "./panelAdmin.html";
     liRegistrarSalon.appendChild(aRegistrarSalon);
     ulNavbar.appendChild(liRegistrarSalon);
     const li = document.createElement("li");
@@ -35,6 +35,20 @@ document.addEventListener("DOMContentLoaded", () => {
     boton.classList.add("nav-link", "text-white", "text-center");
     boton.style.cursor = "pointer";
     const liContacto = document.getElementById("li-contacto").remove();
+
+    const liUsuarios = document.createElement('li')
+    liUsuarios.classList.add(
+      'nav-item',
+      'p-2',
+      'm-2',
+      'hover-effect-list-item'
+    )
+    const aUsuarios = document.createElement('a')
+    aUsuarios.classList.add('nav-link', 'text-white', 'text-center')
+    aUsuarios.textContent = 'Usuarios'
+    aUsuarios.href = './usuarios.html'
+    liUsuarios.appendChild(aUsuarios)
+    ulNavbar.appendChild(liUsuarios)
 
     boton.addEventListener("click", () => {
       borrarSessionStorage()
@@ -62,7 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
     boton.textContent = 'Cerrar Sesión'
     boton.classList.add('nav-link', 'text-white', 'text-center')
     boton.style.cursor = 'pointer'
-    const liContacto = document.getElementById('li-contacto').remove()
 
     boton.addEventListener('click', () => {
       borrarSessionStorage()

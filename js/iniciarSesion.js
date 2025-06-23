@@ -8,16 +8,16 @@ import { authUser,guardarUsuarioSessionStorage } from "./utilidades.js";
     const contrasenia = document.getElementById("contrasenia").value;
 
     if (!usuario || !contrasenia) {
-      return
+      return 
     }
 
     const existeUsuario = await authUser({usuario ,contrasenia})
 
 
     if(existeUsuario) {
-      guardarUsuarioSessionStorage(existeUsuario)
+      guardarUsuarioSessionStorage({usuario: existeUsuario, accessToken: existeUsuario.accessToken})
       if (existeUsuario.role === 'admin') {
-        window.location = 'altaSalones.html'
+        window.location = 'panelAdmin.html'
       } else {
         window.location = 'index.html'
       }

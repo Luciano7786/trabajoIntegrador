@@ -1,3 +1,14 @@
+
+import {
+  obtenerUsuarioSessionStorage
+} from './utilidades.js'
+
+const usuario = obtenerUsuarioSessionStorage()
+
+if (!usuario) {
+  window.location.href = './index.html'
+}
+
 const LS_KEY = "salonesInfantiles";
 let salones = [];
 let proximoId = 1;
@@ -142,7 +153,7 @@ formularioSalon.addEventListener("submit", (event) => {
       address: direccion,
       description: descripcion,
       imageUrls: urlsImagen,
-      estado: 'Disponible'
+      estado: 'disponible'
     };
     salones.push(nuevoSalon);
     mostrarAlerta("Salón agregado exitosamente!", "success");
