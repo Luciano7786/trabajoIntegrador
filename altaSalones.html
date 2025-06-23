@@ -147,92 +147,205 @@
         </div>
       </div>
 
-      <div
-        class="modal fade"
-        id="modalAgregarSalon"
-        tabindex="-1"
-        aria-labelledby="etiquetaModalAgregarSalon"
-        aria-hidden="true"
-      >
+        <div class="modal fade" id="modalAgregarSalon" tabindex="-1" aria-labelledby="etiquetaModalAgregarSalon" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="etiquetaModalAgregarSalon">
-                Nuevo Salón
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Cerrar"
-              ></button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="etiquetaModalAgregarSalon">
+                        Nuevo Salón
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formularioSalon">
+                        <input type="hidden" id="idSalon" value="" />
+                        <div class="mb-3 form-floating">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="nombreSalon"
+                                placeholder="Nombre del Salón"
+                                required
+                            />
+                            <label for="nombreSalon">Nombre</label>
+                        </div>
+                        <div class="mb-3 form-floating">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="direccionSalon"
+                                placeholder="Dirección del Salón"
+                                required
+                            />
+                            <label for="direccionSalon">Dirección</label>
+                        </div>
+                        <div class="mb-3 form-floating">
+                            <textarea
+                                class="form-control"
+                                id="descripcionSalon"
+                                placeholder="Descripción del Salón"
+                                style="height: 100px"
+                            ></textarea>
+                            <label for="descripcionSalon">Descripción</label>
+                        </div>
+                        <div class="mb-3 form-floating">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="urlsImagenSalon"
+                                placeholder="URL de imágenes (separadas por coma)"
+                            />
+                            <label for="urlsImagenSalon">URLs de Imágenes</label>
+                            <small class="form-text text-muted"
+                                >Ej: https://ejemplo.com/imagen1.jpg,
+                                https://ejemplo.com/imagen2.png</small
+                            >
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                        id="botonCancelarModal"
+                    >
+                        Cancelar
+                    </button>
+                    <button
+                        type="submit"
+                        class="btn btn-success"
+                        form="formularioSalon"
+                    >
+                        Guardar
+                    </button>
+                </div>
             </div>
-            <div class="modal-body">
-              <form id="formularioSalon">
-                <input type="hidden" id="idSalon" value="" />
-                <div class="mb-3 form-floating">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="nombreSalon"
-                    placeholder="Nombre del Salón"
-                    required
-                  />
-                  <label for="nombreSalon">Nombre</label>
-                </div>
-                <div class="mb-3 form-floating">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="direccionSalon"
-                    placeholder="Dirección del Salón"
-                    required
-                  />
-                  <label for="direccionSalon">Dirección</label>
-                </div>
-                <div class="mb-3 form-floating">
-                  <textarea
-                    class="form-control"
-                    id="descripcionSalon"
-                    placeholder="Descripción del Salón"
-                    style="height: 100px"
-                  ></textarea>
-                  <label for="descripcionSalon">Descripción</label>
-                </div>
-                <div class="mb-3 form-floating">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="urlsImagenSalon"
-                    placeholder="URL de imágenes (separadas por coma)"
-                  />
-                  <label for="urlsImagenSalon">URLs de Imágenes</label>
-                  <small class="form-text text-muted"
-                    >Ej: https://ejemplo.com/imagen1.jpg,
-                    https://ejemplo.com/imagen2.png</small
-                  >
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-                id="botonCancelarModal"
-              >
-                Cancelar
-              </button>
-              <button
-                type="submit"
-                class="btn btn-success"
-                form="formularioSalon"
-              >
-                Guardar
-              </button>
-            </div>
-          </div>
         </div>
+    </div>
+
+    ---
+
+    <div class="container main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mt-5">Servicios</h2>
+            <button
+                class="btn btn-success"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#modalAgregarServicio"
+            >
+                <i class="bi bi-plus-lg me-2"></i> Agregar Servicio
+            </button>
+        </div>
+        
+        <div id="contenedorAlertaServicios" class="mt-3"></div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-custom table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cuerpoTablaServicios"></tbody>
+                    </table>
+                </div>
+                <p
+                    id="mensajeSinServicios"
+                    class="text-center text-muted mt-3"
+                    style="display: none"
+                >
+                    No hay servicios registrados.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    ---
+
+    <div
+        class="modal fade"
+        id="modalAgregarServicio"
+        tabindex="-1"
+        aria-labelledby="etiquetaModalAgregarServicio"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="etiquetaModalAgregarServicio">
+                        Nuevo Servicio
+                    </h5>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Cerrar"
+                    ></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formularioServicio">
+                        <input type="hidden" id="idServicio" value="" />
+                        <div class="mb-3 form-floating">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="nombreServicio"
+                                placeholder="Nombre del Servicio"
+                                required
+                            />
+                            <label for="nombreServicio">Nombre del Servicio</label>
+                        </div>
+                        <div class="mb-3 form-floating">
+                            <textarea
+                                class="form-control"
+                                id="descripcionServicio"
+                                placeholder="Descripción del Servicio"
+                                style="height: 100px"
+                            ></textarea>
+                            <label for="descripcionServicio">Descripción</label>
+                        </div>
+                        <div class="mb-3 form-floating">
+                            <input
+                                type="number"
+                                step="0.01"
+                                class="form-control"
+                                id="precioServicio"
+                                placeholder="Precio del Servicio"
+                                required
+                            />
+                            <label for="precioServicio">Precio</label>
+                        </div>
+                        </form>
+                </div>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                        id="botonCancelarModalServicio"
+                    >
+                        Cancelar
+                    </button>
+                    <button
+                        type="submit"
+                        class="btn btn-success"
+                        form="formularioServicio"
+                    >
+                        Guardar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
       </div>
 
       <div class="container main-content">
@@ -311,5 +424,6 @@
     <script type="module" src="js/header-boton.js"></script>
     <script type="module" src="js/salones.js"></script></script>
     <script type="module" src="js/usuarios.js"></script>
+    <script type="module" src="js/servicios.js""></script>
   </body>
 </html>
