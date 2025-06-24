@@ -5,6 +5,10 @@ export function obtenerUsuarioSessionStorage() {
   return JSON.parse(sessionStorage.getItem("usuario")) || null;
 }
 
+export function getSalones () {
+  return JSON.parse (localStorage.getItem("salonesInfantiles")) || null;
+}
+
 export function guardarUsuarioSessionStorage ({usuario, accessToken}) {
   const existeUsuario = sessionStorage.getItem('usuario')
   if(existeUsuario) {
@@ -85,3 +89,4 @@ export async function obtenerUsuarios (){
   }
   
 }
+

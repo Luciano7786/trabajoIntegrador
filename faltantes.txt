@@ -1,0 +1,6 @@
+Modificar formulario para que quede como cotizacion de los servicios
+Modificar el padding o margin de cuando se inicia sesion 
+Una vez seleccionados el salon con los servicios, que muestre el costo total con lo que se selecciono.
+
+
+
