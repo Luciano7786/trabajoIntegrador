@@ -90,3 +90,7 @@ export async function obtenerUsuarios (){
   
 }
 
+export function obtenerServicios () {
+  return JSON.parse(localStorage.getItem("servicios")) || null;
+}
+

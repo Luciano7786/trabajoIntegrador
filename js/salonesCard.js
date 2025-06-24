@@ -14,9 +14,9 @@ export function salonesCards() {
     <div class="salon-placeholder d-flex flex-column align-items-center">
       <div class="img-container">
         <img
-           src=${
-             salon.imageUrls ? salon.imageUrls : './img/imagen_placeholder.jpg'
-           }
+          src=${
+            salon.imageUrls ? salon.imageUrls : './img/imagen_placeholder.jpg'
+          }
           alt="Imagen de salón de fiestas"
           class="salon-img"
         />

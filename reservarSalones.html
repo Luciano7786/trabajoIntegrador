@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -92,35 +92,20 @@
           </div>
       </div>
       <div id="formulario-reserva" class="container mt-5 p-5 bg-light border border-primary rounded-4 shadow-lg">
-        <h2>Formulario de Contacto</h2>
-        <p>Completa tus datos y enviaremos tu mensaje.</p>
-        
+        <h2>Servicios Adicionales</h2>
+        <p>Seleccioná los servicios que desees contratar.</p>
         <form id="contactForm">
-            <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre" placeholder="Tu nombre" required>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Correo Electrónico</label>
-                <input type="email" class="form-control" id="email" placeholder="ejemplo@dominio.com" required>
-            </div>
-            <div class="mb-3">
-                <label for="mensaje" class="form-label">Mensaje</label>
-                <textarea class="form-control" id="mensaje" rows="4" placeholder="Escribe tu mensaje aquí..." required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
         </form>
 
-        <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="confirmModalLabel">¡Mensaje Enviado!</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h5 class="modal-title" id="confirmModalLabel">Presupuesto Solicitado</h5>
+                        <button id="botonSubmit" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <p>¡Gracias por contactarnos! Tu mensaje ha sido recibido con éxito.</p>
-                        <p>Pronto nos pondremos en contacto contigo.</p>
+                    <div id="modalParrafo" class="modal-body">
+                      <p id="parrafoPresupuesto"></p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

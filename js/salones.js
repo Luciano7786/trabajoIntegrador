@@ -12,7 +12,7 @@ if (!usuario) {
 const LS_KEY = "salonesInfantiles";
 let salones = [];
 let proximoId = 1;
-import { obtenerSalones, salonesCards } from './salonesCard.js'
+import {salonesCards } from './salonesCard.js'
 const formularioSalon = document.getElementById("formularioSalon");
 const inputIdSalon = document.getElementById("idSalon");
 const inputNombreSalon = document.getElementById("nombreSalon");
