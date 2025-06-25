@@ -18,6 +18,7 @@ const inputIdSalon = document.getElementById("idSalon");
 const inputNombreSalon = document.getElementById("nombreSalon");
 const inputDireccionSalon = document.getElementById("direccionSalon");
 const inputDescripcionSalon = document.getElementById("descripcionSalon");
+const inputPrecioSalon = document.getElementById("precioSalon");
 const inputUrlsImagenSalon = document.getElementById("urlsImagenSalon");
 const cuerpoTablaSalones = document.getElementById("cuerpoTablaSalones");
 const tituloFormulario = document.getElementById("etiquetaModalAgregarSalon");
@@ -126,6 +127,7 @@ formularioSalon.addEventListener("submit", (event) => {
   const direccion = inputDireccionSalon.value.trim();
   const descripcion = inputDescripcionSalon.value.trim();
   const urlsImagen = inputUrlsImagenSalon.value.trim() || 'img/imagen_placeholder.jpg';
+  const precio = Number(inputPrecioSalon.value)
 
   if (!nombre || !direccion) {
     mostrarAlerta("El nombre y la dirección son obligatorios.", "danger");
@@ -153,7 +155,8 @@ formularioSalon.addEventListener("submit", (event) => {
       address: direccion,
       description: descripcion,
       imageUrls: urlsImagen,
-      estado: 'disponible'
+      estado: 'disponible',
+      precio
     };
     salones.push(nuevoSalon);
     mostrarAlerta("Salón agregado exitosamente!", "success");

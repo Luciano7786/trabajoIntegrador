@@ -5,7 +5,7 @@ export function obtenerUsuarioSessionStorage() {
   return JSON.parse(sessionStorage.getItem("usuario")) || null;
 }
 
-export function getSalones () {
+export function getSalones() {
   return JSON.parse (localStorage.getItem("salonesInfantiles")) || null;
 }
 
@@ -94,3 +94,8 @@ export function obtenerServicios () {
   return JSON.parse(localStorage.getItem("servicios")) || null;
 }
 
+export const getSalonId = (id) => {
+  const salones = getSalones()
+  const salon = salones.find(sal => parseInt(sal.id) === parseInt(id))
+  return salon
+}
