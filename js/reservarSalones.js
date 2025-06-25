@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const idSalon = card.id
       const salon = getSalonId(idSalon)
       salonPrecio = salon.precio
+      formSalon.scrollIntoView({ behavior: 'smooth' })
       console.log(salonPrecio)
     })
   }

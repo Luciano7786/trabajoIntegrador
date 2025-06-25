@@ -128,7 +128,10 @@ formularioSalon.addEventListener("submit", (event) => {
   const descripcion = inputDescripcionSalon.value.trim();
   const urlsImagen = inputUrlsImagenSalon.value.trim() || 'img/imagen_placeholder.jpg';
   const precio = Number(inputPrecioSalon.value)
-
+  if (isNaN(precio) || precio <= 0){
+    mostrarAlerta("El precio debe ser un número positivo.", "danger");
+    return;
+  }
   if (!nombre || !direccion) {
     mostrarAlerta("El nombre y la dirección son obligatorios.", "danger");
     return;
