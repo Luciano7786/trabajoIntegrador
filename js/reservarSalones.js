@@ -1,4 +1,4 @@
-import { getSalones, obtenerServicios, getSalonId } from './utilidades.js'
+import { getSalones, obtenerServicios, getSalonId, guardarPresupuestoLocalStorage, obtenerPresupuestoLocalStorage } from './utilidades.js'
 const formSalon = document.getElementById('formulario-reserva')
 const formulario = document.getElementById('contactForm')
 
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const salones = getSalones()
 
     console.log(salones)
-
+    console.log(obtenerPresupuestoLocalStorage())
     salones.forEach((salon) => {  
       const card = document.createElement('div')
       card.classList.add('col-lg-3', 'col-md-4', 'col-sm-6', 'card-salon')
@@ -76,6 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
         servicios: serviciosSeleccionados
       }
 
+      guardarPresupuestoLocalStorage(presupuesto)
+
       const modal = document.getElementById('parrafoPresupuesto')
       modal.innerHTML = `<p>
     El costo total del salón más los servicios seleccionados es de <span class='fw-bold'>$${presupuesto.valorTotal.toLocaleString(
@@ -117,24 +119,31 @@ document.addEventListener('DOMContentLoaded', () => {
     <input type="text" class="form-control" id="tematica" required>
   </div>
         `
-  formulario.innerHTML += `
+ 
+  if (servicios){
+     formulario.innerHTML += `
           <p>Seleccioná los servicios que desees contratar.</p>`
-  servicios.forEach((serv) => {
-    formulario.innerHTML += `
-      <div class="form-check">
-            <input class="form-check-input" type="checkbox" value=${serv.price} id="comidaLunch" name="servicios">
-            <label class="form-check-label" for="comidaLunch">
-              <span class="fw-semibold" >${serv.name}: </span> ${serv.description} - $${serv.price}
-            </label>
-      </div>`
-
+    servicios.forEach((serv) => {
+        formulario.innerHTML += `
+          <div class="form-check">
+                <input class="form-check-input" type="checkbox" value=${serv.price} id="comidaLunch" name="servicios">
+                <label class="form-check-label" for="comidaLunch">
+                  <span class="fw-semibold" >${serv.name}: </span> ${serv.description} - $${serv.price}
+                </label>
+          </div>`
   })
+  }
 
-  formulario.innerHTML += `<button type="submit" class="btn btn-primary">Pedir Presupuesto</button>`
+  const botonFromulario = document.createElement('button')
+  botonFromulario.textContent = 'Pedir Presupuesto'
+  botonFromulario.type = 'submit'
+  botonFromulario.classList.add('btn', 'btn-primary')
+  formulario.appendChild(botonFromulario)
 
   const serviciosCheckBoxes = document.querySelectorAll(
     'input[type="checkbox"][name="servicios"]'
   )
+
 
   // serviciosCheckBoxes.forEach((cb) => {
   //   cb.addEventListener('change', (e) => {

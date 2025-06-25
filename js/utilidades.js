@@ -99,3 +99,18 @@ export const getSalonId = (id) => {
   const salon = salones.find(sal => parseInt(sal.id) === parseInt(id))
   return salon
 }
+
+export function obtenerPresupuestoLocalStorage(){
+  return JSON.parse(localStorage.getItem("presupuesto")) || null
+}
+
+export function guardarPresupuestoLocalStorage(presupuesto){
+  const presupuestoExistente = obtenerPresupuestoLocalStorage()
+  const presupuestoArreglo = []
+  if(!presupuestoExistente){
+    presupuestoArreglo.push(presupuesto)
+  }else{
+    presupuestoArreglo.push(...presupuestoExistente, presupuesto)
+  }
+  localStorage.setItem("presupuesto", JSON.stringify(presupuestoArreglo))
+}
