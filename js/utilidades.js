@@ -1,5 +1,6 @@
 
 import { salones } from "../constantes/salones.js";
+import { servicios } from "../constantes/servicios.js";
 
 export function obtenerUsuarioSessionStorage() {
   return JSON.parse(sessionStorage.getItem("usuario")) || null;
@@ -32,7 +33,10 @@ function inicializarLocalStorage() {
   const yaExiste = localStorage.getItem('salonesInfantiles')
   if (!yaExiste) {
     localStorage.setItem('salonesInfantiles', JSON.stringify(salones))
-
+  }
+  const yaExisteServicios = localStorage.getItem('servicios')
+  if (!yaExisteServicios) {
+    localStorage.setItem('servicios', JSON.stringify(servicios))
   }
 }
 
@@ -113,4 +117,12 @@ export function guardarPresupuestoLocalStorage(presupuesto){
     presupuestoArreglo.push(...presupuestoExistente, presupuesto)
   }
   localStorage.setItem("presupuesto", JSON.stringify(presupuestoArreglo))
+}
+
+export const guardarSalonLocalStorage = (salonParam) => {
+  const salonesExistentes = getSalones()
+  const nuevosSalones = salonesExistentes.filter(sal => sal.id !== salonParam.id)
+  console.log(nuevosSalones)  
+  nuevosSalones.push(salonParam)
+  localStorage.setItem('salonesInfantiles', JSON.stringify(nuevosSalones))
 }

@@ -18,6 +18,7 @@ const inputIdSalon = document.getElementById("idSalon");
 const inputNombreSalon = document.getElementById("nombreSalon");
 const inputDireccionSalon = document.getElementById("direccionSalon");
 const inputDescripcionSalon = document.getElementById("descripcionSalon");
+const inputCapacidadSalon = document.getElementById("capacidadSalon");
 const inputPrecioSalon = document.getElementById("precioSalon");
 const inputUrlsImagenSalon = document.getElementById("urlsImagenSalon");
 const cuerpoTablaSalones = document.getElementById("cuerpoTablaSalones");
@@ -128,6 +129,7 @@ formularioSalon.addEventListener("submit", (event) => {
   const descripcion = inputDescripcionSalon.value.trim();
   const urlsImagen = inputUrlsImagenSalon.value.trim() || 'img/imagen_placeholder.jpg';
   const precio = Number(inputPrecioSalon.value)
+  const capacidadSalon = Number(inputCapacidadSalon.value) || 0
   if (isNaN(precio) || precio <= 0){
     mostrarAlerta("El precio debe ser un número positivo.", "danger");
     return;
@@ -159,7 +161,8 @@ formularioSalon.addEventListener("submit", (event) => {
       description: descripcion,
       imageUrls: urlsImagen,
       estado: 'disponible',
-      precio
+      precio, 
+      capacidad: capacidadSalon
     };
     salones.push(nuevoSalon);
     mostrarAlerta("Salón agregado exitosamente!", "success");
