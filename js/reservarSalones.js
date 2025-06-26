@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const salon = getSalonId(idSalon)
       salonPrecio = salon.precio
       formSalon.scrollIntoView({ behavior: 'smooth' })
+      formulario.reset()
       console.log(salonPrecio)
     })
   }
@@ -138,12 +139,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const botonFromulario = document.createElement('button')
   botonFromulario.textContent = 'Pedir Presupuesto'
   botonFromulario.type = 'submit'
-  botonFromulario.classList.add('btn', 'btn-primary')
+  botonFromulario.classList.add('btn', 'btn-primary', 'mt-3')
   formulario.appendChild(botonFromulario)
 
-  const serviciosCheckBoxes = document.querySelectorAll(
-    'input[type="checkbox"][name="servicios"]'
-  )
+  // const serviciosCheckBoxes = document.querySelectorAll(
+  //   'input[type="checkbox"][name="servicios"]'
+  // )
 
 
   // serviciosCheckBoxes.forEach((cb) => {

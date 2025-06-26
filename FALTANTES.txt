@@ -1,0 +1,2 @@
+- Poner nombre del salon en el formulario
+- Agregar campo capacidad en el formulario del salon
