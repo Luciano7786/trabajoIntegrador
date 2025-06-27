@@ -27,6 +27,8 @@ const inputBusquedaSalon = document.getElementById("inputBusquedaSalon");
 const botonLimpiarBusqueda = document.getElementById("botonLimpiarBusqueda");
 const contenedorAlerta = document.getElementById("contenedorAlerta");
 const mensajeSinSalones = document.getElementById("mensajeSinSalones");
+const inputEstadoSalon = document.getElementById('estadoSalon')
+
 
 const modalAgregarSalon = new bootstrap.Modal(
   document.getElementById("modalAgregarSalon")
@@ -120,27 +122,30 @@ function mostrarSalones(salonesFiltrados = salones) {
   });
 }
 
-formularioSalon.addEventListener("submit", (event) => {
-  event.preventDefault();
+formularioSalon.addEventListener('submit', (event) => {
+  event.preventDefault()
 
-  const id = inputIdSalon.value;
-  const nombre = inputNombreSalon.value.trim();
-  const direccion = inputDireccionSalon.value.trim();
-  const descripcion = inputDescripcionSalon.value.trim();
-  const urlsImagen = inputUrlsImagenSalon.value.trim() || 'img/imagen_placeholder.jpg';
+  const id = inputIdSalon.value
+  const nombre = inputNombreSalon.value.trim()
+  const direccion = inputDireccionSalon.value.trim()
+  const descripcion = inputDescripcionSalon.value.trim()
+  const urlsImagen =
+    inputUrlsImagenSalon.value.trim() || 'img/imagen_placeholder.jpg'
   const precio = Number(inputPrecioSalon.value)
   const capacidadSalon = Number(inputCapacidadSalon.value) || 0
-  if (isNaN(precio) || precio <= 0){
-    mostrarAlerta("El precio debe ser un número positivo.", "danger");
-    return;
+  const estado = inputEstadoSalon.value
+
+  if (isNaN(precio) || precio <= 0) {
+    mostrarAlerta('El precio debe ser un número positivo.', 'danger')
+    return
   }
   if (!nombre || !direccion) {
-    mostrarAlerta("El nombre y la dirección son obligatorios.", "danger");
-    return;
+    mostrarAlerta('El nombre y la dirección son obligatorios.', 'danger')
+    return
   }
 
   if (id) {
-    const indice = salones.findIndex((s) => s.id === parseInt(id));
+    const indice = salones.findIndex((s) => s.id === parseInt(id))
     if (indice !== -1) {
       salones[indice] = {
         id: parseInt(id),
@@ -148,10 +153,13 @@ formularioSalon.addEventListener("submit", (event) => {
         address: direccion,
         description: descripcion,
         imageUrls: urlsImagen,
-      };
-      mostrarAlerta("Salón actualizado exitosamente!", "success");
+        estado,
+        precio,
+        capacidad: capacidadSalon
+      }
+      mostrarAlerta('Salón actualizado exitosamente!', 'success')
     } else {
-      mostrarAlerta("Error: Salón no encontrado para editar.", "danger");
+      mostrarAlerta('Error: Salón no encontrado para editar.', 'danger')
     }
   } else {
     const nuevoSalon = {
@@ -160,20 +168,81 @@ formularioSalon.addEventListener("submit", (event) => {
       address: direccion,
       description: descripcion,
       imageUrls: urlsImagen,
-      estado: 'disponible',
-      precio, 
+      estado,
+      precio,
       capacidad: capacidadSalon
-    };
-    salones.push(nuevoSalon);
-    mostrarAlerta("Salón agregado exitosamente!", "success");
+    }
+    salones.push(nuevoSalon)
+    mostrarAlerta('Salón agregado exitosamente!', 'success')
   }
 
-  guardarSalonesEnLocalStorage();
-  mostrarSalones();
-  limpiarFormulario();
-  modalAgregarSalon.hide();
-  salonesCards();
-});
+  guardarSalonesEnLocalStorage()
+  mostrarSalones()
+  limpiarFormulario()
+  modalAgregarSalon.hide()
+  salonesCards()
+})
+
+
+// formularioSalon.addEventListener("submit", (event) => {
+//   event.preventDefault();
+
+//   const id = inputIdSalon.value;
+//   const nombre = inputNombreSalon.value.trim();
+//   const direccion = inputDireccionSalon.value.trim();
+//   const descripcion = inputDescripcionSalon.value.trim();
+//   const urlsImagen = inputUrlsImagenSalon.value.trim() || 'img/imagen_placeholder.jpg';
+//   const precio = Number(inputPrecioSalon.value)
+//   const capacidadSalon = Number(inputCapacidadSalon.value) || 0
+//   const estado = inputEstadoSalon.value
+
+//   if (isNaN(precio) || precio <= 0){
+//     mostrarAlerta("El precio debe ser un número positivo.", "danger");
+//     return;
+//   }
+//   if (!nombre || !direccion) {
+//     mostrarAlerta("El nombre y la dirección son obligatorios.", "danger");
+//     return;
+//   }
+
+//   if (id) {
+//     const indice = salones.findIndex((s) => s.id === parseInt(id));
+//     if (indice !== -1) {
+//       salones[indice] = {
+//         id: parseInt(id),
+//         name: nombre,
+//         address: direccion,
+//         description: descripcion,
+//         imageUrls: urlsImagen,
+//         estado,
+//         precio,
+//         capacidad: capacidadSalon
+//       }
+//       mostrarAlerta("Salón actualizado exitosamente!", "success");
+//     } else {
+//       mostrarAlerta("Error: Salón no encontrado para editar.", "danger");
+//     }
+//   } else {
+//     const nuevoSalon = {
+//       id: proximoId++,
+//       name: nombre,
+//       address: direccion,
+//       description: descripcion,
+//       imageUrls: urlsImagen,
+//       estado: 'disponible',
+//       precio, 
+//       capacidad: capacidadSalon
+//     };
+//     salones.push(nuevoSalon);
+//     mostrarAlerta("Salón agregado exitosamente!", "success");
+//   }
+
+//   guardarSalonesEnLocalStorage();
+//   mostrarSalones();
+//   limpiarFormulario();
+//   modalAgregarSalon.hide();
+//   salonesCards();
+// });
 
 window.editarSalon = function (id) {
   const salon = salones.find((s) => s.id === id);
@@ -183,7 +252,10 @@ window.editarSalon = function (id) {
     inputDireccionSalon.value = salon.address;
     inputDescripcionSalon.value = salon.description;
     inputUrlsImagenSalon.value = salon.imageUrls;
+    inputCapacidadSalon.value = salon.capacidad;
+    inputPrecioSalon.value = salon.precio
     tituloFormulario.textContent = "Editar Salón";
+    inputEstadoSalon.value = salon.estado || 'disponible'
     modalAgregarSalon.show();
   } else {
     mostrarAlerta("Salón no encontrado para edición.", "danger");
