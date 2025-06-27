@@ -12,7 +12,7 @@ if (!usuario) {
 const LS_KEY = "salonesInfantiles";
 let salones = [];
 let proximoId = 1;
-import {salonesCards } from './salonesCard.js'
+import { salonesCards } from './salonesCard.js'
 const formularioSalon = document.getElementById("formularioSalon");
 const inputIdSalon = document.getElementById("idSalon");
 const inputNombreSalon = document.getElementById("nombreSalon");
@@ -182,67 +182,6 @@ formularioSalon.addEventListener('submit', (event) => {
   modalAgregarSalon.hide()
   salonesCards()
 })
-
-
-// formularioSalon.addEventListener("submit", (event) => {
-//   event.preventDefault();
-
-//   const id = inputIdSalon.value;
-//   const nombre = inputNombreSalon.value.trim();
-//   const direccion = inputDireccionSalon.value.trim();
-//   const descripcion = inputDescripcionSalon.value.trim();
-//   const urlsImagen = inputUrlsImagenSalon.value.trim() || 'img/imagen_placeholder.jpg';
-//   const precio = Number(inputPrecioSalon.value)
-//   const capacidadSalon = Number(inputCapacidadSalon.value) || 0
-//   const estado = inputEstadoSalon.value
-
-//   if (isNaN(precio) || precio <= 0){
-//     mostrarAlerta("El precio debe ser un número positivo.", "danger");
-//     return;
-//   }
-//   if (!nombre || !direccion) {
-//     mostrarAlerta("El nombre y la dirección son obligatorios.", "danger");
-//     return;
-//   }
-
-//   if (id) {
-//     const indice = salones.findIndex((s) => s.id === parseInt(id));
-//     if (indice !== -1) {
-//       salones[indice] = {
-//         id: parseInt(id),
-//         name: nombre,
-//         address: direccion,
-//         description: descripcion,
-//         imageUrls: urlsImagen,
-//         estado,
-//         precio,
-//         capacidad: capacidadSalon
-//       }
-//       mostrarAlerta("Salón actualizado exitosamente!", "success");
-//     } else {
-//       mostrarAlerta("Error: Salón no encontrado para editar.", "danger");
-//     }
-//   } else {
-//     const nuevoSalon = {
-//       id: proximoId++,
-//       name: nombre,
-//       address: direccion,
-//       description: descripcion,
-//       imageUrls: urlsImagen,
-//       estado: 'disponible',
-//       precio, 
-//       capacidad: capacidadSalon
-//     };
-//     salones.push(nuevoSalon);
-//     mostrarAlerta("Salón agregado exitosamente!", "success");
-//   }
-
-//   guardarSalonesEnLocalStorage();
-//   mostrarSalones();
-//   limpiarFormulario();
-//   modalAgregarSalon.hide();
-//   salonesCards();
-// });
 
 window.editarSalon = function (id) {
   const salon = salones.find((s) => s.id === id);
